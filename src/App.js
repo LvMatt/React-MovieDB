@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import MovieImg from './assets/Image/movie_img.png';
+import MOCK_MOVIES from './Shared/MockMovies';
+import MovieList from './MovieList';
+import MoviePoster from './MoviePoster';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  state = {movies : MOCK_MOVIES};
+  render() {
+    return (
+      <div className="App">
+        <div className="jumbotron">
+          <h1>React Movies <img alt="Movie" src={MovieImg}></img> </h1>  
+           This small App demonstrates communication between child-components using Input/Output
+        </div> 
+        <MovieList/>
+        <MoviePoster movies={this.state.movies}/>
+      </div>
+    );
+  }
 }
 
 export default App;
